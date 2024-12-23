@@ -1,0 +1,43 @@
+Steps to Create a Freestyle Job:
+Open Jenkins Dashboard:
+
+Navigate to your Jenkins instance in a browser.
+Log in with your credentials.
+Create a New Item:
+
+On the Jenkins dashboard, click on "New Item" in the left-hand menu.
+Name Your Job:
+
+Enter a name for the job (e.g., First-Freestyle-Job).
+Select "Freestyle project" and click OK.
+Configure the Job:
+
+After creating the job, you'll be directed to the configuration page.
+General Settings:
+Add a description to describe the job's purpose (optional).
+Source Code Management (Optional):
+If your job requires code from a version control system (e.g., Git), select Git.
+Provide the repository URL and credentials if needed.
+Build Triggers:
+Configure triggers to specify when the job should be executed. Examples include:
+Poll SCM
+Build periodically
+Triggered by another job
+Build Steps:
+Add a build step. Common options include:
+Execute Shell: Run a shell script or command.
+Invoke Ant or Invoke Gradle Script: Use for builds managed with Ant/Gradle.
+Execute Windows Batch Command: Run a batch script or command on Windows.
+Post-build Actions:
+Add actions to perform after the build, such as:
+Archive artifacts
+Publish test results
+Email notifications
+Save the Job:
+
+Click "Save" to store your job configuration.
+Run the Job:
+
+On the job's main page, click "Build Now" to execute the job.
+Check the "Build History" section for build results.
+Click on a build number to view detailed logs and outputs.
