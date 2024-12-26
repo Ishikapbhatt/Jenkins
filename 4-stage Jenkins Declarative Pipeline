@@ -1,0 +1,37 @@
+pipeline {
+    agent any  // This specifies that the pipeline can run on any available agent.
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                // You can replace this with actual build commands, such as:
+                // sh 'mvn clean install' or 'npm run build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Replace with your actual test commands, e.g.,
+                // sh 'mvn test' or 'npm test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Replace with your actual deployment commands, e.g.,
+                // sh 'ansible-playbook deploy.yml' or 'kubectl apply -f deployment.yaml'
+            }
+        }
+
+        stage('Notify') {
+            steps {
+                echo 'Notifying stakeholders...'
+                // You can replace this with an actual notification step, like sending an email or using Slack
+                // Example: slackSend(channel: '#your-channel', message: "Build completed!")
+            }
+        }
+    }
+}
