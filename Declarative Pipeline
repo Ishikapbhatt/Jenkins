@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'scp target/*.jar user@server:/path/to/deploy'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline complete'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
