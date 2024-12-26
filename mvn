@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    tools{
+        maven 'mvn'
+    }
+
+    stages {
+        stage('pull') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Ishikapbhatt/Student-App-Code.git'
+            }
+        }
+        
+        stage('build'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+    }
+}
