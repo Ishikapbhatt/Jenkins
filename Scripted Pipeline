@@ -1,0 +1,14 @@
+node {
+    stage('Checkout') {
+        checkout scm
+    }
+    stage('Build') {
+        sh 'mvn clean install'
+    }
+    stage('Test') {
+        sh 'mvn test'
+    }
+    stage('Deploy') {
+        sh 'scp target/*.jar user@server:/path/to/deploy'
+    }
+}
