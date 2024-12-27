@@ -1,0 +1,11 @@
+my-maven-project/
+├── src/
+│   ├── main/
+│   │   ├── java/              # Application source code
+│   │   ├── resources/         # Configuration files (e.g., properties, XML, etc.)
+│   │   ├── webapp/            # Web application files (if applicable)
+│   ├── test/
+│   │   ├── java/              # Test source code
+│   │   ├── resources/         # Test-specific configurations
+├── target/                    # Compiled files, JAR/WAR output
+├── pom.xml                    # Project configuration and build settings
