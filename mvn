@@ -1,20 +1,24 @@
 pipeline {
     agent any
-    tools{
-        maven 'mvn'
+    tools {
+        maven 'maven'
     }
 
     stages {
         stage('pull') {
             steps {
-                git branch: 'main', url: 'https://github.com/Ishikapbhatt/Student-App-Code.git'
-            }
+                git branch: 'main', url: 'https://github.com/abhipraydhoble/Student-App-Code.git'
+                }
         }
-        
         stage('build'){
-            steps{
-                sh 'mvn package'
-            }
+            steps {
+            sh 'mvn package'
+             }
         }
+        stage('test'){
+            steps {
+            sh 'touch ishika.txt'
+            }
+             }
     }
 }
