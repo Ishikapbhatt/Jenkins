@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    
+    environment {
+        MAVEN_HOME = tool name: 'Maven', type: 'Tool'
+    }
+    
+    stages {
+        stage('Pull Code') {
+            steps {
+                // Pulls the latest code from the repository (assumes Git SCM is configured)
+                git branch: 'main', url: 'https://your-repository-url.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Run Maven build
+                sh "'${MAVEN_HOME}/bin/mvn' clean install"
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run Maven tests
+                sh "'${MAVEN_HOME}/bin/mvn' test"
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy the artifact if required (e.g., to a repository or server)
+                sh "'${MAVEN_HOME}/bin/mvn' deploy"
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
