@@ -1,0 +1,22 @@
+pipeline {
+    agent any 
+    
+    stages { 
+        stage('SCM Checkout') {
+            steps{
+           git branch: 'main', url: 'https://github.com/lily4499/lil-node-app.git'
+            }
+        }
+        // run sonarqube test
+        stage('Run Sonarqube') {
+            environment {
+                scannerHome = tool 'scanner';
+            }
+            steps {
+              withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'sonar') {
+                sh "${scannerHome}/bin/sonar-scanner"
+              }
+            }
+        }
+    }
+}
